@@ -73,6 +73,7 @@ public class UserController {
 
         userService.deleteById(username);
         return "redirect:/user/create";
+
     }
 
 
