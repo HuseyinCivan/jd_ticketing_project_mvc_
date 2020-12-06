@@ -139,7 +139,7 @@
                                                 <td>
                                                     <a class="btn btn-warning rounded-0">Update</a>
                                                     <a th:href="@{/project/delete/{id}(id=${project.getProjectCode()})}"><button type="button" class="btn btn-danger rounded-0">Delete</button></a>
-                                                    <a class="btn btn-info rounded-0">Complete</a>
+                                                    <a th:href="@{/project/complete/{id}(id=${project.getProjectCode()})}" class="btn btn-info rounded-0">Complete</a>
                                                 </td>
                                             </tr>
                                             </tbody>
