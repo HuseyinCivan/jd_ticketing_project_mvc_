@@ -1,9 +1,11 @@
 package com.cybertek.controller;
 
 import com.cybertek.dto.ProjectDTO;
+import com.cybertek.dto.UserDTO;
 import com.cybertek.enums.Status;
 import com.cybertek.service.ProjectService;
 import com.cybertek.service.UserService;
+import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,7 +60,7 @@ public class ProjectController {
     }
 
     @GetMapping("/update/{projectCode}")
-    public String updateProject(@PathVariable("projectCode") String projectcode,Model model){
+    public String editProject(@PathVariable("projectCode") String projectcode,Model model){
 
         model.addAttribute("project", projectService.findById(projectcode));
         model.addAttribute("projects",projectService.findAll());
@@ -67,6 +69,14 @@ public class ProjectController {
 
 
         return "/project/update";
+    }
+
+    @PostMapping("/update/{projectCode}")
+    public String updateProject(@PathVariable("projectCode") String projectcode, ProjectDTO project,Model model){
+
+        projectService.update(project);
+
+        return "redirect:/project/create";
     }
 
 }
